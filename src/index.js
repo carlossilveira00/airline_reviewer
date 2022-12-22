@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
+import Airline from './components/Airline';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "airlines/:slug",
-    element: <App/>
+    element: <Airline />
   }
 ]);
 

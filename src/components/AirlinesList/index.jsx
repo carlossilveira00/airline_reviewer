@@ -24,7 +24,7 @@ function AirlinesList() {
         {airlines.map((airline, index) => {
           return (
           <Grid item xs={2} sm={4} md={4} key={index}>
-            <AirlineCard name={airline.name} average_score={airline.average_score} image_url={airline.image_url}/>
+            <AirlineCard name={airline.name} average_score={airline.average_score} image_url={airline.image_url} slug={airline.slug}/>
           </Grid>
           )
         })}
