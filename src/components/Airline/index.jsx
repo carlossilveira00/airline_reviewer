@@ -11,6 +11,7 @@ const AIRLINE_API = 'http://127.0.0.1:3000/'
 
 const Airline = () => {
   const [airline, setAirline] = useState({})
+  const [review, setReview] = useState({})
   // Get location to then use pathname to get the slug from the URL.
   const location = useLocation();
 
@@ -22,6 +23,8 @@ const Airline = () => {
 
   const handleChange = (event) => {
     event.preventDefault()
+    setReview(Object.assign({}, review, {[event.target.name]: event.target.value}))
+    console.log(review)
   };
 
   const handleSubmit = (event) => {
@@ -41,6 +44,7 @@ const Airline = () => {
           <ReviewForm
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            name={airline.name}
           />
           </div>
           </Grid>
