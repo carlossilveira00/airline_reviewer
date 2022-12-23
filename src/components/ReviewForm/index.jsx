@@ -7,7 +7,7 @@ function ReviewForm({handleChange, handleSubmit, name}) {
         <div>Had an experience with {name}? Share your review!</div>
         <div className='field'>
           <label htmlFor="ftitle">Title</label>
-          <input type="text" id="title" name="name" placeholder='Review Title' onChange={handleChange}/>
+          <input type="text" id="title" name="title" placeholder='Review Title' onChange={handleChange}/>
         </div>
         <div className='field'>
           <label htmlFor="description">Description</label>

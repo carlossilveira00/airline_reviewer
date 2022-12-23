@@ -18,18 +18,27 @@ const Airline = () => {
   useEffect(()=>{
     fetch(AIRLINE_API+location.pathname)
     .then(response => response.json())
-    .then(data => setAirline(data))
+    .then(data => setAirline(data.airline))
   },[location.pathname]);
 
   const handleChange = (event) => {
     event.preventDefault()
-    setReview(Object.assign({}, review, {[event.target.name]: event.target.value}))
+    setReview(Object.assign({}, review, {[event.target.name]: event.target.value},{airline_id: airline.id}))
     console.log(review)
   };
 
   const handleSubmit = (event) => {
+    const reviewsPost = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(review)
+  };
+
     event.preventDefault()
-    console.log("SUBMIT IS WORKING ")
+    fetch('http://127.0.0.1:3000/reviews', reviewsPost)
+    .then(response => response.json())
+    .then(data => console.log(data))
+
   }
 
   return (
