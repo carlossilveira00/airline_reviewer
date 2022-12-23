@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './Airline.scss';
 import AirlineShowCard from '../AirlineShowCard';
 import ReviewForm from '../ReviewForm';
+import ReviewCard from '../ReviewCard';
 import { Grid } from '@mui/material';
 import { Container } from '@mui/material';
 
@@ -11,7 +12,7 @@ const AIRLINE_API = 'http://127.0.0.1:3000/'
 
 const Airline = () => {
   const [airline, setAirline] = useState({});
-  const [reviewsList, setReviewsList] = useState({});
+  const [reviewsList, setReviewsList] = useState([]);
   const [review, setReview] = useState({});
   // Get location to then use pathname to get the slug from the URL.
   const location = useLocation();
@@ -47,7 +48,7 @@ const Airline = () => {
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <AirlineShowCard name={airline.name} image_url={airline.image_url} average_score={3}/>
+            <AirlineShowCard name={airline.name} image_url={airline.image_url} average_score={airline.average_score}/>
           </Grid>
           <Grid item xs={6}>
             <div className='form'>
@@ -59,6 +60,11 @@ const Airline = () => {
             </div>
           </Grid>
         </Grid>
+      </Container>
+      <Container>
+        {reviewsList.map((review, index)=>{
+          return <ReviewCard key={index} title={review.title} description={review.description} score={review.score}/>
+        })}
       </Container>
     </div>
   );
